@@ -1,0 +1,208 @@
+/* Fonts are loaded via next/font/google in layout.tsx */
+@import "tailwindcss";
+
+/* ─── Design Tokens ──────────────────────────────────── */
+:root {
+  --color-paper: #f7f4ef;
+  --color-ink: #1a1a1a;
+  --color-accent: #4a5343;
+  --color-sienna: #c1440e;
+  --color-sienna-light: #d4622e;
+  --color-border: rgba(26, 26, 26, 0.14);
+  --color-border-strong: rgba(26, 26, 26, 0.30);
+  --color-muted: rgba(26, 26, 26, 0.50);
+  --color-surface: rgba(26, 26, 26, 0.04);
+  --color-surface-hover: rgba(74, 83, 67, 0.08);
+
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "Space Mono", monospace;
+}
+
+/* ─── Tailwind v4 theme extension ───────────────────── */
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-ink: var(--color-ink);
+  --color-accent: var(--color-accent);
+  --color-sienna: var(--color-sienna);
+  --color-border-default: var(--color-border);
+  --color-muted: var(--color-muted);
+
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+/* ─── Base Reset ────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+/* ─── Grain/Noise overlay ───────────────────────────── */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 192px 192px;
+  opacity: 0.028;
+  mix-blend-mode: multiply;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(26, 26, 26, 0.30);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(26, 26, 26, 0.50);
+}
+
+/* ─── Typography Utilities ──────────────────────────── */
+.font-serif {
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+.font-mono {
+  font-family: "Space Mono", monospace;
+}
+.font-sans {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ─── Underline reveal animation ───────────────────── */
+.underline-reveal {
+  position: relative;
+  display: inline-block;
+}
+.underline-reveal::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #4a5343;
+  transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.underline-reveal:hover::after {
+  width: 100%;
+}
+
+/* ─── Thin separator ────────────────────────────────── */
+.separator {
+  border: none;
+  border-top: 1px solid rgba(26, 26, 26, 0.12);
+}
+
+/* ─── Focus ring ────────────────────────────────────── */
+:focus-visible {
+  outline: 1px solid #4a5343;
+  outline-offset: 2px;
+}
+
+/* ─── Selection ─────────────────────────────────────── */
+::selection {
+  background-color: rgba(74, 83, 67, 0.18);
+  color: #1a1a1a;
+}
+
+/* ─── Fade-in keyframe ──────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in {
+  animation: fadeIn 0.45s ease forwards;
+}
+
+/* ─── Skeleton shimmer ──────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(26,26,26,0.06) 25%,
+    rgba(26,26,26,0.12) 50%,
+    rgba(26,26,26,0.06) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: 2px;
+}
+
+/* ─── Paper texture card ────────────────────────────── */
+.paper-card {
+  background-color: #f7f4ef;
+  border: 1px solid rgba(26, 26, 26, 0.12);
+  position: relative;
+}
+.paper-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,0.25) 0%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* ─── Stamp / tag ───────────────────────────────────── */
+.stamp {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+  padding: 1px 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ─── Hide scrollbar utility ────────────────────────── */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Spin animation ────────────────────────────────── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
