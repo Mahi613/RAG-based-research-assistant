@@ -3,6 +3,13 @@
 An intelligent Retrieval-Augmented Generation (RAG) assistant that fetches research papers from arXiv, extracts and processes PDFs, indexes semantic embeddings into ChromaDB, re-ranks relevant chunks using a Cross-Encoder model, and generates structured, cited answers using Groq LLaMA 3.3-70B.
 
 ---
+<p align="center">
+  <img width="45%" alt="View 1" src="https://github.com" />
+  <img width="45%" alt="View 2" src="https://github.com/user-attachments/assets/c5b38e76-21c3-42c4-bd02-7dc0ea72ab59" />
+</p>
+
+
+
 
 ## Features
 
@@ -75,7 +82,5 @@ To measure pipeline latency and memory usage on your dataset:
 python scripts/benchmark.py --top_k 3
 
 
-<p align="center">
-  <img width="800" alt="Screenshot 2026-11-02 210137" src="https://github.com" />
-</p>
+
 
