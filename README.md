@@ -73,9 +73,9 @@ python main.py
 To measure pipeline latency and memory usage on your dataset:
 ```bash
 python scripts/benchmark.py --top_k 3
-```<img width="1917" height="920" alt="Screenshot 2026-11-02 210234" src="https://github.com/user-attachments/assets/c85a7637-3426-4eb0-bc79-fe36fc4d06b1" />
 
 
-Detailed reports will be generated in `logs/benchmark_<timestamp>.csv` and `logs/profiling.jsonl`.
-<img width="1917" height="920" alt="Screenshot 2026-11-02 210234" src="https://github.com/user-attachments/assets/564eeeb9-c556-4b9a-8abd-4201dd3a7f48" />
+<p align="center">
+  <img width="800" alt="Screenshot 2026-11-02 210137" src="https://github.com" />
+</p>
 
